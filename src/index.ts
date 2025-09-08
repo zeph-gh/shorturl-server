@@ -11,7 +11,14 @@ const app = express()
 const port = process.env.PORT || 3000
 const prisma = new PrismaClient() // ORM
 
-app.use(cors())
+// app.use(cors())
+
+app.use(cors({
+  origin: 'http://localhost:3000', 
+  methods: ['GET', 'POST'],
+  credentials: true, 
+}));
+
 app.use(express.json())
 
 const isValidUrl = (url: string): boolean => {
